@@ -1,22 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>BYOB on SqueakJS</title>
+  <meta charset="UTF-8">
+  <title>BYOB in the Browser</title>
   <style>
-    html, body, canvas {
-      margin: 0; padding: 0; width: 100%; height: 100%; background: black;
+    body {
+      background-color: #c0c0c0;
+      font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
+      color: #000;
+      margin: 0;
+      padding: 0;
     }
-    canvas { display: block; }
+
+    #wrapper {
+      width: 1024px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 2px outset #fff;
+      background-color: #e0e0e0;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      color: navy;
+      margin: 10px 0;
+    }
+
+    iframe {
+      display: block;
+      margin: 0 auto;
+      border: 2px inset #aaa;
+      width: 100%;
+      height: 768px;
+      background: #000;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #333;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .controls {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 5px 10px;
+      margin-top: 10px;
+      border: 2px outset #aaa;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ccc;
+    }
   </style>
 </head>
 <body>
-  <iframe
-  src="https://squeak.js.org/run/?image=https://jbluebird.github.io/BYOB-ONLINE-TEST/BYOB.image&changes=https://jbluebird.github.io/BYOB-ONLINE-TEST/BYOB.changes&sources=https://jbluebird.github.io/BYOB-ONLINE-TEST/SqueakV3.sources"
-  width="1024"
-  height="768"
-  style="border:none;">
-</iframe>
+  <div id="wrapper">
+    <h1>Run BYOB in Your Web Browser</h1>
+    <div class="controls">
+	  <p>Have a old project? Drag and drop it here!</p>
+      <button onclick="goFullscreen()">Fullscreen</button>
+    </div>
+    <iframe
+      id="byobFrame"
+      src="https://squeak.js.org/run/?image=https://jbluebird.github.io/BYOB-ONLINE-TEST/BYOB.image&changes=https://jbluebird.github.io/BYOB-ONLINE-TEST/BYOB.changes&sources=https://jbluebird.github.io/BYOB-ONLINE-TEST/SqueakV3.sources">
+    </iframe>
+    <h2>Why run BYOB online?</h2>
+    <p>BYOB (Build Your Own Blocks) was a super cool version of Scratch that let you make your own blocks! That meant you could build your own commands, just like real programmers do. Back then, most coding tools for kids didn't let you do that â€” you could only use the blocks they gave you. But BYOB changed that! It let you be more creative, build bigger and smarter projects, and even learn computer science ideas like loops, functions, and more. It was like leveling up from Scratch and feeling like a real coding wiz! BYOB was fun, powerful, and way ahead of its time!</p>
+    <ul>
+      <li>No installing - just open and play!</li>
+      <li>Saves your projects right in your browser (or download them!)</li>
+      <li>Works on any computer - Mac, Windows, Linux, even school Chromebooks!</li>
+      <li>Super fast to load and easy to share with friends</li>
+      <li>Still looks and feels like the classic BYOB you love</li>
+      <li>Safe and sandboxed - it stays in the browser!</li>
+    </ul>
+    <p style="text-align:center; font-size:1.2em;">
+      It's like BYOB moved into the future, but kept its old-school magic! âœ¨
+    </p>
+    <div class="footer">
+      © 2009-2025 | BYOB by UC Berkeley
+    </div>
+  </div>
 
+  <script>
+    function goFullscreen() {
+      const iframe = document.getElementById('byobFrame');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
