@@ -70,19 +70,20 @@
       <p>Have an old project? Drag and drop it here!</p>
       <label for="imageSelect">Choose a version: </label>
       <select id="imageSelect" onchange="loadImage()">
+        <option value="" selected disabled>-- Select a BYOB version --</option>
         <option value="BYOB.image">BYOB 1.0</option>
         <option value="BYOB2.0.image">BYOB 2.0</option>
         <option value="BYOB2.99.image">BYOB 2.99</option>
         <option value="BYOB3.1.1.image">3.1.1</option>
         <!-- Add more options here as needed -->
       </select>
-      <button onclick="goFullscreen()">Fullscreen</button>
+      <button id="fullscreenBtn" onclick="goFullscreen()" disabled>🔳 Fullscreen</button>
     </div>
 
     <iframe
-       id="byobFrame"
-       src="https://squeak.js.org/run/?image=https://jbluebird.github.io/Browser-BYOB/BYOB.image&changes=https://jbluebird.github.io/Browser-BYOB/BYOB.changes&sources=https://jbluebird.github.io/Browser-BYOB/SqueakV3.sources">
-    </iframe>
+  id="byobFrame"
+  src=""></iframe>
+
 
     <h2>Why run BYOB online?</h2>
     <p>BYOB (Build Your Own Blocks) was a super cool version of Scratch that let you make your own blocks! That meant you could build your own commands, just like real programmers do. Back then, most coding tools for kids didn't let you do that — you could only use the blocks they gave you. But BYOB changed that! It let you be more creative, build bigger and smarter projects, and even learn computer science ideas like loops, functions, and more. It was like leveling up from Scratch and feeling like a real coding wiz! BYOB was fun, powerful, and way ahead of its time!</p>
@@ -117,14 +118,21 @@
     }
 
     function loadImage() {
-      const selectedImage = document.getElementById('imageSelect').value;
-      const iframe = document.getElementById('byobFrame');
-      const baseURL = "https://squeak.js.org/run/";
-      const imageURL = `https://jbluebird.github.io/Browser-BYOB/${selectedImage}`;
-      const changes = `https://jbluebird.github.io/Browser-BYOB/BYOB.changes`;
-      const sources = `https://jbluebird.github.io/Browser-BYOB/SqueakV3.sources`;
-      iframe.src = `${baseURL}?image=${imageURL}&changes=${changes}&sources=${sources}`;
-    }
+  const selectedImage = document.getElementById('imageSelect').value;
+  if (!selectedImage) return;
+
+  const iframe = document.getElementById('byobFrame');
+  const baseURL = "https://squeak.js.org/run/";
+  const imageURL = `https://jbluebird.github.io/Browser-BYOB/${selectedImage}`;
+  const changes = `https://jbluebird.github.io/Browser-BYOB/BYOB.changes`;
+  const sources = `https://jbluebird.github.io/Browser-BYOB/SqueakV3.sources`;
+
+  iframe.src = `${baseURL}?image=${imageURL}&changes=${changes}&sources=${sources}`;
+
+  // Enable fullscreen after selecting
+  document.getElementById('fullscreenBtn').disabled = false;
+}
+
   </script>
 </body>
 </html>
