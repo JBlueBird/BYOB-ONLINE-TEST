@@ -61,9 +61,72 @@
     button:hover, select:hover {
       background-color: #ccc;
     }
+    .popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: #fff;
+  width: 80%;
+  max-width: 700px;
+  padding: 20px;
+  border: 2px solid #999;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #000;
+  position: relative;
+}
+
+.popup-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.close-button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #ddd;
+  border: 1px solid #888;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
+  <div id="devlogPopup" class="popup-overlay" onclick="hideDevlog(event)">
+    <div class="popup-content">
+      <h2>BYOB Version Devlog</h2>
+      <div class="popup-scroll">
+        <!-- Insert the devlog content generated -->
+        <p><strong>BYOB 1.0 (2008)</strong><br>
+        Introduced custom blocks, letting kids create their own programming blocks, just like real programmers!</p>
+  
+        <p><strong>BYOB 2.0 (2009)</strong><br>
+        Added custom blocks with parameters – now you could make blocks that worked with inputs!</p>
+  
+        <p><strong>BYOB 2.0.2</strong><br>
+        A small update with bug fixes and smoother input handling for your own blocks.</p>
+  
+        <p><strong>BYOB 2.99.x</strong><br>
+        Added cool things like blocks inside blocks (first-class procedures) and real computer science ideas like recursion!</p>
+  
+        <p><strong>BYOB 3.1.1 (2011)</strong><br>
+        The final and best version! It let you build really smart blocks with lists, lambdas, even your own control structures!</p>
+  
+        <p>All of this helped make Snap! possible — and it all started here!</p>
+      </div>
+      <button onclick="hideDevlog()" class="close-button">Close</button>
+    </div>
+  </div>
   <div id="wrapper">
     <h1>Run BYOB in Your Web Browser</h1>
     <div class="controls">
@@ -81,6 +144,7 @@
         <!-- Add more options here as needed -->
       </select>
       <button id="fullscreenBtn" onclick="goFullscreen()" disabled>🔳 Fullscreen</button>
+      <button onclick="showDevlog()">Devlog</button>
     </div>
 
     <iframe
@@ -107,6 +171,17 @@
   </div>
 
   <script>
+    function showDevlog() {
+  document.getElementById('devlogPopup').style.display = 'flex';
+}
+
+function hideDevlog(event) {
+  const popup = document.getElementById('devlogPopup');
+  if (event?.target === popup || event?.type === 'click') {
+    popup.style.display = 'none';
+  }
+}
+
     function goFullscreen() {
       const iframe = document.getElementById('byobFrame');
       if (iframe.requestFullscreen) {
