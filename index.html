@@ -73,7 +73,6 @@
     <iframe
        id="byobFrame"
        src="https://squeak.js.org/run/?image=https://jbluebird.github.io/Browser-BYOB/BYOB.image&changes=https://jbluebird.github.io/Browser-BYOB/BYOB.changes&sources=https://jbluebird.github.io/Browser-BYOB/SqueakV3.sources">
-       onload="this.contentWindow.focus();">
     </iframe>
     <h2>Why run BYOB online?</h2>
     <p>BYOB (Build Your Own Blocks) was a super cool version of Scratch that let you make your own blocks! That meant you could build your own commands, just like real programmers do. Back then, most coding tools for kids didn't let you do that â€” you could only use the blocks they gave you. But BYOB changed that! It let you be more creative, build bigger and smarter projects, and even learn computer science ideas like loops, functions, and more. It was like leveling up from Scratch and feeling like a real coding wiz! BYOB was fun, powerful, and way ahead of its time!</p>
@@ -94,10 +93,6 @@
   </div>
 
   <script>
-    document.getElementById('byobFrame').addEventListener('click', function () {
-      this.contentWindow.focus();
-    });
-
     function goFullscreen() {
       const iframe = document.getElementById('byobFrame');
       if (iframe.requestFullscreen) {
