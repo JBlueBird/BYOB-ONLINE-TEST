@@ -16,8 +16,9 @@ Features
 - Compatible with any system, even School Chromebooks!
 - Plug and play - no download needed.
 
-Here are all the BYOB versions my program can run! (plus a few extras)
---
+
+*Here are all the BYOB versions my program can run! (plus a few extras)*
+
 ## 🧱 BYOB Versions
 - **BYOB 2.0** — `BYOB2.0.image`
 - **BYOB 2.0.2** — `BYOB2.0.2.image`
